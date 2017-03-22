@@ -1,22 +1,9 @@
-# Module 13: Git Collaboration
+# Git Collaboration
 
-## Overview
 One of the most important aspects of a version control system is the ability to collaborate with others on projects. There are a variety of approaches to collaborating using git and GitHub, and in this course we'll introduce using a [centralized workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/centralized-workflow) (however, feel free to use an alternate approach if you prefer). In order to begin collaboration, you need to understand how to structure your repositories, integrate changes from others, and deal with any conflicts that may arise.
 
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-**Contents**
+Helpful links:
 
-- [Resources](#resources)
-- [Repository Set up](#repository-set-up)
-- [Rebasing](#rebasing)
-- [Resolving Conflicts](#resolving-conflicts)
-- [GitHub Issues](#github-issues)
-- [Branches](#branches)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
-## Resources
 - [Centralized Workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/centralized-workflow)
 - [Merging v.s. Rebasing](https://www.atlassian.com/git/tutorials/merging-vs-rebasing)
 - [GitHub Issues](https://guides.github.com/features/issues/)
@@ -27,11 +14,11 @@ One of the most important aspects of a version control system is the ability to 
 ## Repository Set up
 To leverage a centralized workflow, **all team members will use the same remote repository** on GitHub. Once you have created a repository, you'll need to **add each team member** as a collaborator on GitHub, which will allow all people to push to the repository:
 
-![add collaborators on github](imgs/add-collaborators.png)
+![add collaborators on github](m16-imgs/add-collaborators.png)
 
 Once you've added all members to the GitHub repository, everyone should   clone (**not fork and clone**) the same repository (image [source](https://www.atlassian.com/git/tutorials/comparing-workflows/centralized-workflow)):
 
-![fork the same repository](imgs/fork-repo.png)
+![fork the same repository](m16-imgs/fork-repo.png)
 
 At this point, all members should have read/write access to the same repository up on GitHub, and they should have it cloned to their machines. Importantly, the remote version of the code (on GitHub) should be considered the **single source of truth**, and should always contain the most up to date (functioning)
  version of the code.
@@ -41,11 +28,11 @@ When working on the same project as other individuals, it's possible that you'll
 
 For example, imagine two people both pushing to the same remote. The diagram below depicts a common occurrence in which both people begin working from the same commit, and then Person One pushes changes up to GitHub. Person 2 is then no longer working on top of the most up to date version of the code. If they attempt to push changes up to GitHub, they will be rejected:
 
-![commit flow with failed push](imgs/failed-push.png)
+![commit flow with failed push](m16-imgs/failed-push.png)
 
 The push from Person 2 will be rejected because they have not incorporated the changes in the remote. Luckily, **rebasing** provides a mechanism for pulling down changes from GitHub, then applying local commits on top of them:
 
-![commit flow with successful push](imgs/successful-push.png)
+![commit flow with successful push](m16-imgs/successful-push.png)
 
 In this diagram, Person 2 is able to push their work up to the remote branch _only after_ incorporating the changes that Person 1 had made. To do this, they would use the following code:
 
@@ -70,11 +57,11 @@ To practice simple rebasing, see [exercise-1](exercise-1).
 ## Resolving Conflicts
 If git does not detect edits to the same line of code, it will be able to perform a rebase without any conflict. However, **this does not mean that your code functions as you expect**, so you'll need to confirm that appropriately. If multiple people do edit the same line of code, a _conflict_ will arise, which you will have to resolve. You'll be notified of this when you attempt to rebase your code:
 
-![rebase error](imgs/rebase-error.png)
+![rebase error](m16-imgs/rebase-error.png)
 
 Git will provide you with a helpful error message notifying you of your error. **Don't panic**. If you want to stop the rebase process and revert to the point before you attempted a rebase, you can always enter the command `git rebase --abort`. However, at this point you can move forward with the rebase process. Git **will change your files** with merge conflicts to highlight the lines that have been changed locally and on the remote. It will look something like this:
 
-![merge conflict](imgs/merge-conflict.png)
+![merge conflict](m16-imgs/merge-conflict.png)
 
 Let's take a look at this. Wherever you have a conflict, git will notify you with this symbol: `<<<<<<<` (it's hard to miss). You then have the code from your `HEAD` (remote branch). This may be multiple lines of code. The remote and local branches are divided by a line of equal signs (`=======`), followed by the local code version. The merge conflict is then closed with this symbol: `>>>>>>>`.
 
