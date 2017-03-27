@@ -52,7 +52,7 @@ git push origin master
 
 This section of code would replay the `Made Changes` commit _on top of_ whatever had changed on the remote. However, if Person 1 and Person 2 edited the same line of code, Person 2 would have to resolve a conflict as part of the rebase process. Note, just because the rebase executes without a conflict, **it does not mean that your code runs as expected**. Be sure to **test out your code** before pushing back up to GitHub.
 
-To practice simple rebasing, see [exercise-1](exercise-1).
+To practice simple rebasing, see [exercise-1](http://github.com/info201-s17/m16-git-collaboration/tree/master/exercise-1).
 
 ## Resolving Conflicts
 If git does not detect edits to the same line of code, it will be able to perform a rebase without any conflict. However, **this does not mean that your code functions as you expect**, so you'll need to confirm that appropriately. If multiple people do edit the same line of code, a _conflict_ will arise, which you will have to resolve. You'll be notified of this when you attempt to rebase your code:
@@ -90,7 +90,7 @@ git rebase --continue
 git push origin master
 ```
 
-To practice resolving conflict, see [exercise-2](exercise-2).
+To practice resolving conflict, see [exercise-2](http://github.com/info201-s17/m16-git-collaboration/tree/master/exercise-2).
 
 ## GitHub Issues
 A great way to keep track of tasks you need to complete (or small bugs in your code) is with [GitHub issues](https://guides.github.com/features/issues/). These are visible under the **Issues** tab of a project on GitHub. You can assign these to particular group members, comment on them, and even [close issues with commit messages](https://help.github.com/articles/closing-issues-via-commit-messages/). We'll strongly urge you to keep track of to-do items via GitHub issues.
@@ -157,4 +157,4 @@ git add .
 git commit -m "Merged in changes fro my-branch branch"
 ```
 
-To practice merging branches, see [exercise-3](exercise-3).
+To practice merging branches, see [exercise-3](http://github.com/info201-s17/m16-git-collaboration/tree/master/exercise-3).
